@@ -148,129 +148,21 @@
                                     </div>
                                 </div>
 
+                                <!--Time Picker-->
                                 <div class="weui-cell">
-                                    <div class="weui-cell__hd"><label for="name" class="weui-label">时间</label></div>
+                                    <div class="weui-cell__hd"><label for="time3" class="weui-label">时间</label></div>
                                     <div class="weui-cell__bd">
-                                        <input class="weui-input" id="mobile" type="text" value="" readonly="">
+                                        <input class="weui-input" id="time3" type="text" readonly="">
                                     </div>
                                 </div>
+
                                 <div class="weui-cell">
                                     <div class="weui-cell__hd"><label for="name" class="weui-label">失物类型</label></div>
                                     <div class="weui-cell__bd">
-                                        <input class="weui-input" id="in" type="text" value="校园卡，书本" readonly="" data-values="1,3">
+                                        <input class="weui-input" id="lost-type" type="text" value="如校园卡，书本" readonly="" data-values="1,3">
                                     </div>
                                 </div>
                             </div>
-
-                            <!--TODO: Filter JS-->
-                            <!--Filter JS-->
-                            <script>
-                                $("#campus").select({
-                                    title: "选择职业",
-                                    items: ["法官", "医生", "猎人", "学生", "记者", "其他"],
-                                    onChange: function(d) {
-                                        console.log(this, d);
-                                    },
-                                    onClose: function() {
-                                        console.log("close");
-                                    },
-                                    onOpen: function() {
-                                        console.log("open");
-                                    },
-                                });
-                                $("#mobile").select({
-                                    title: "选择手机",
-                                    items: [
-                                        {
-                                            title: "iPhone 3GS",
-                                            value: "001",
-                                        },
-                                        {
-                                            title: "iPhone 5",
-                                            value: "002",
-                                        },
-                                        {
-                                            title: "iPhone 5S",
-                                            value: "003",
-                                        },
-                                        {
-                                            title: "iPhone 6",
-                                            value: "004",
-                                        },
-                                        {
-                                            title: "iPhone 6S",
-                                            value: "005",
-                                        },
-                                        {
-                                            title: "iPhone 6P",
-                                            value: "006",
-                                        },
-                                        {
-                                            title: "iPhone 6SP",
-                                            value: "007",
-                                        },
-                                        {
-                                            title: "iPhone SE",
-                                            value: "008",
-                                        },
-                                        {
-                                            title: "iPhone 7",
-                                            value: "009"
-                                        }
-                                    ]
-                                });
-                                $("#in").select({
-                                    title: "您的爱好",
-                                    multi: true,
-                                    min: 2,
-                                    max: 3,
-                                    items: [
-                                        {
-                                            title: "画画",
-                                            value: 1,
-                                            description: "额外的数据1"
-                                        },
-                                        {
-                                            title: "打球",
-                                            value: 2,
-                                            description: "额外的数据2"
-                                        },
-                                        {
-                                            title: "唱歌",
-                                            value: 3,
-                                            description: "额外的数据3"
-                                        },
-                                        {
-                                            title: "游泳",
-                                            value: 4,
-                                            description: "额外的数据4"
-                                        },
-                                        {
-                                            title: "健身",
-                                            value: 5,
-                                            description: "额外的数据5"
-                                        },
-                                        {
-                                            title: "睡觉",
-                                            value: 6,
-                                            description: "额外的数据6"
-                                        },
-                                    ],
-                                    beforeClose: function(values, titles) {
-                                        if(values.indexOf("6") !== -1) {
-                                            $.toast("不能选睡觉", "cancel");
-                                            return false;
-                                        }
-                                        return true;
-                                    },
-                                    onChange: function(d) {
-                                        console.log(this, d);
-                                    },
-                                    onClose: function (d) {
-                                        console.log('close')
-                                    }
-                                });
-                            </script>
 
                             <!--Panel Part-->
                             <div class="weui-panel weui-panel_access">
@@ -324,6 +216,88 @@
 <script src="../lib/jquery-2.1.4.js"></script>
 <script src="../lib/fastclick.js"></script>
 <script src="../js/jquery-weui.js"></script>
+
+<!--TODO: Filter JS, Figure out where to put scripts & what does "for" in label mean?-->
+<!--Filter JS-->
+<script>
+    $("#campus").select({
+        title: "选择校区",
+        items: ["中关村", "良乡"],
+        onChange: function(d) {
+            console.log(this, d);
+        },
+        onClose: function() {
+            console.log("close");
+        },
+        onOpen: function() {
+            console.log("open");
+        },
+    });
+    $("#time3").datetimePicker({
+        times: function () {
+            return [
+                {
+                    values: ['上午', '下午']
+                }
+            ];
+        },
+        value: '2018-06-13 上午',
+        onChange: function (picker, values, displayValues) {
+            console.log(values);
+        }
+    });
+    $("#lost-type").select({
+        title: "失物类型",
+        multi: false,
+        min: 1,
+        max: 1,
+        items: [
+            {
+                title: "画画",
+                value: 1,
+                description: "额外的数据1"
+            },
+            {
+                title: "打球",
+                value: 2,
+                description: "额外的数据2"
+            },
+            {
+                title: "唱歌",
+                value: 3,
+                description: "额外的数据3"
+            },
+            {
+                title: "游泳",
+                value: 4,
+                description: "额外的数据4"
+            },
+            {
+                title: "健身",
+                value: 5,
+                description: "额外的数据5"
+            },
+            {
+                title: "睡觉",
+                value: 6,
+                description: "额外的数据6"
+            },
+        ],
+        beforeClose: function(values, titles) {
+            if(values.indexOf("6") !== -1) {
+                $.toast("不能选睡觉", "cancel");
+                return false;
+            }
+            return true;
+        },
+        onChange: function(d) {
+            console.log(this, d);
+        },
+        onClose: function (d) {
+            console.log('close')
+        }
+    });
+</script>
 
 
 </body>
