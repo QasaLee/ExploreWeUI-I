@@ -55,7 +55,7 @@
                             <div class="weui-cells">
                                 <div class="weui-cell weui-cell_select weui-cell_select-after">
                                     <div class="weui-cell__hd">
-                                        <label for="" class="weui-label">失物类型</label>
+                                        <label class="weui-label">失物类型</label>
                                     </div>
                                     <div class="weui-cell__bd">
                                         <select class="weui-select" name="select2">
@@ -142,9 +142,9 @@
                                 <div class="weui-cells__title">快速筛选</div>
 
                                 <div class="weui-cell">
-                                    <div class="weui-cell__hd"><label for="name" class="weui-label">校区</label></div>
+                                    <div class="weui-cell__hd"><label for="campus" class="weui-label">校区</label></div>
                                     <div class="weui-cell__bd">
-                                        <input class="weui-input" id="campus" type="text" value="" readonly="">
+                                        <input class="weui-input" id="campus" type="text" value="如中关村校区" readonly="">
                                     </div>
                                 </div>
 
@@ -157,9 +157,9 @@
                                 </div>
 
                                 <div class="weui-cell">
-                                    <div class="weui-cell__hd"><label for="name" class="weui-label">失物类型</label></div>
+                                    <div class="weui-cell__hd"><label for="lost-type" class="weui-label">失物类型</label></div>
                                     <div class="weui-cell__bd">
-                                        <input class="weui-input" id="lost-type" type="text" value="如校园卡，书本" readonly="" data-values="1,3">
+                                        <input class="weui-input" id="lost-type" type="text" value="如校园卡" readonly="" data-values="1,3">
                                     </div>
                                 </div>
 
@@ -218,7 +218,6 @@
 <script src="../lib/fastclick.js"></script>
 <script src="../js/jquery-weui.js"></script>
 
-<!--TODO: Filter JS & what does "for" in label mean?-->
 <!--Filter JS-->
 <script async>
     $("#campus").select({
@@ -229,7 +228,7 @@
         items: [
             {
                 title: "中关村校区",
-                value: 1,
+                value: 111,
                 description: "额外的数据1"
             },
             {
@@ -238,8 +237,8 @@
                 description: "额外的数据2"
             },
         ],
-        beforeClose: function(values, titles) {
-            if(values.indexOf("3") !== -1) {
+        beforeClose: function(values, titles) { // This function prevents non-selection in the form.
+            if(values.indexOf("3") !== -1) { // Selected the item of value 111
                 $.toast("不能选睡觉", "cancel");
                 return false;
             }
@@ -260,7 +259,7 @@
                 }
             ];
         },
-        value: '2018-06-13 上午',
+        value: '如2018-06-13 上午',
         onChange: function (picker, values, displayValues) {
             console.log(values);
         }
