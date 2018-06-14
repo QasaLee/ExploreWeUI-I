@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="../css/weui.css">
     <link rel="stylesheet" href="../css/example.css">
     <link rel="stylesheet" href="../css/jquery-weui.css">
-
 </head>
 
 <body ontouchstart="">
@@ -29,7 +28,7 @@
                         </a>
                     </div>
 
-                    <!--Navbar panels-->
+                    <!--Navbar tab panels-->
                     <div class="weui-tab__bd">
                         <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
                             <!--Quick Intro-->
@@ -107,8 +106,8 @@
                                 <div class="weui-cell__bd">
                                     <div class="weui-uploader">
                                         <div class="weui-uploader__hd">
-                                            <p class="weui-uploader__title">图片上传</p>
-                                            <div class="weui-uploader__info">0/2</div>
+                                            <p class="weui-uploader__title">图片上传（可选）</p>
+                                            <div class="weui-uploader__info">0/1</div>
                                         </div>
                                         <div class="weui-uploader__bd">
                                             <ul class="weui-uploader__files" id="uploaderFiles">
@@ -130,7 +129,7 @@
                             </div>
                             <!--Submit Button-->
                             <div class="weui-btn-area">
-                                <a class="weui-btn weui-btn_primary" href="javascript:" id="show-success">确认提交</a>
+                                <a class="weui-btn weui-btn_primary" href="./msg_success.html" id="show-success">确认提交</a>
                                 <!--TODO: - Jump to detail page after top-tip disappears-->
                             </div>
 
@@ -375,6 +374,7 @@
             $.toptip('警告', 'warning');
         })
 </script>
+
 
 </body>
 </html>

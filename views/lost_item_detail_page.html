@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cmn-Hans">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <title>失物详情</title>
     <!--Link Files including css files-->
     <link rel="stylesheet" href="../lib/weui.min.css">
@@ -9,7 +10,6 @@
     <link rel="stylesheet" href="../css/demos.css">
 </head>
 <body>
-
 <header class="demos-header">
     <h1 class="demos-title">失物详情</h1>
 </header>
@@ -27,6 +27,10 @@
             <label class="weui-form-preview__label">失物种类</label>
             <span class="weui-form-preview__value">校园卡</span>
         </div>
+
+        <!--TODO: - 失物图片-->
+
+
         <div class="weui-form-preview__item">
             <label class="weui-form-preview__label">校区</label>
             <span class="weui-form-preview__value">中关村校区</span>
@@ -37,27 +41,31 @@
         </div>
         <div class="weui-form-preview__item">
             <label class="weui-form-preview__label">丢失地点</label>
-            <span class="weui-form-preview__value">很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字</span>
+            <span class="weui-form-preview__value">综合教学楼五楼503</span>
         </div>
         <div class="weui-form-preview__item">
             <label class="weui-form-preview__label">失物详情</label>
-            <span class="weui-form-preview__value">名字名字名字</span>
+            <span class="weui-form-preview__value">112016XXXX</span>
         </div>
     </div>
 
     <!--TODO: - 进入此页面的时候先识别是否是这条启示的主人，如果是则选择第一个Div-->
-    <div class="weui-form-preview__ft">
-        <a class="weui-form-preview__btn weui-form-preview__btn_primary" id="show-actions" href="javascript:">操作</a>
-    </div>
+    <!--<div class="weui-form-preview__ft">-->
+        <!--&lt;!&ndash;Photo Browser&ndash;&gt;-->
+        <!--<a class="weui-form-preview__btn weui-form-preview__btn_default" id="pb1" href="javascript:">查看图片</a>-->
+        <!--<a class="weui-form-preview__btn weui-form-preview__btn_primary" id="show-actions" href="javascript:">操作</a>-->
+    <!--</div>-->
 
     <div class="weui-form-preview__ft">
-        <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">复制电话号码</a>
-        <!--TODO：- 提示复制成功，可以给失主联系啦-->
+        <!--Photo Browser-->
+        <a class="weui-form-preview__btn weui-form-preview__btn_default" id="pb1" href="javascript:">查看图片</a>
+        <!--提示复制成功，可以给失主联系啦-->
+        <a class="weui-form-preview__btn weui-form-preview__btn_primary" id="show-success" href="javascript:">复制电话号码</a>
     </div>
 
     <!--Footer other wise too ugly-->
     <div class="weui-footer weui-footer_fixed-bottom">
-        <p class="weui-footer__text">© 2015-2018 北京理工大学</p>
+        <p class="weui-footer__text">© 2014-2018 北京理工大学</p>
     </div>
 </div>
 
@@ -105,6 +113,42 @@
         });
     });
 </script>
+<!--Photo Browser-->
+<script type='text/javascript' src='https://jqweui.cn/dist/js/swiper.js' charset='utf-8'></script>
+<script>
+    var pb1 = $.photoBrowser({
+        items: [
+            "https://jqweui.cn/dist/demos/images/swiper-1.jpg",
+        ],
 
+        onSlideChange: function(index) {
+            console.log(this, index);
+        },
+
+        onOpen: function() {
+            console.log("onOpen", this);
+        },
+        onClose: function() {
+            console.log("onClose", this);
+        }
+    });
+    $("#pb1").click(function() {
+        pb1.open();
+    });
+
+</script>
+<!--Cpoy phone number Show-Success JS-->
+<script>
+    $(document)
+        .on('click', '#show-success', function() {
+            $.toptip('复制成功，现在您可以和失主联系了！', 'success');
+        })
+        .on('click', '#show-error', function() {
+            $.toptip('操作失败', 'error');
+        })
+        .on('click', '#show-warning', function() {
+            $.toptip('警告', 'warning');
+        })
+</script>
 </body>
 </html>
