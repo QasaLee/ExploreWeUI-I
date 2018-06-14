@@ -19,7 +19,7 @@
             <!--Tab bar-->
             <div class="weui-tab">
                 <div class="weui-tab">
-                    <!--Navbar well done!-->
+                    <!--Navbar tabs!-->
                     <div class="weui-navbar">
                         <a class="weui-navbar__item weui-bar__item--on" href="#tab1">
                             寻物启事
@@ -28,6 +28,7 @@
                             失物招领
                         </a>
                     </div>
+
                     <!--Navbar panels-->
                     <div class="weui-tab__bd">
                         <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
@@ -78,7 +79,7 @@
                             <div class="weui-cells weui-cells_form">
                                 <div class="weui-cell">
                                     <div class="weui-cell__bd">
-                                        <textarea class="weui-textarea" placeholder="请输入描述" rows="3"></textarea>
+                                        <textarea class="weui-textarea" placeholder="请输入描述，如是校园卡建议输入学号或工号" rows="3"></textarea>
                                         <div class="weui-textarea-counter"><span>0</span>/200</div>
                                     </div>
                                 </div>
@@ -129,7 +130,8 @@
                             </div>
                             <!--Submit Button-->
                             <div class="weui-btn-area">
-                                <a class="weui-btn weui-btn_primary" href="javascript:" id="showTooltips">确认提交</a>
+                                <a class="weui-btn weui-btn_primary" href="javascript:" id="show-success">确认提交</a>
+                                <!--TODO: - Jump to detail page after top-tip disappears-->
                             </div>
 
                         </div>
@@ -159,13 +161,14 @@
                                     <div class="weui-cell__hd"><label for="lost-type" class="weui-label">失物类型</label></div>
                                     <div class="weui-cell__bd">
                                         <input class="weui-input" id="lost-type" type="text" value="如校园卡" readonly="" data-values="1,3">
+                                        <!--TODO: - 选完之后自动跳转到过滤后的那一页-->
                                     </div>
                                 </div>
 
                             </div>
 
                             <!--Panel Part-->
-                            <!--Today's Part-->
+                            <!--TODO: - Today's Part only show 10 items-->
                             <div class="weui-panel weui-panel_access">
                                 <div class="weui-panel__hd">今天</div>
                                 <div class="weui-panel__bd">
@@ -213,7 +216,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <!--Notes Before today-->
+                            <!--TODO: - Notes Before today only show 15 items-->
                             <div class="weui-panel weui-panel_access">
                                 <div class="weui-panel__hd">昨天及之前</div>
                                 <div class="weui-panel__bd">
@@ -359,6 +362,19 @@
     });
 </script>
 
+<!--发布按钮 Show-Success JS-->
+<script>
+    $(document)
+        .on('click', '#show-success', function() {
+            $.toptip('操作成功', 'success');
+        })
+        .on('click', '#show-error', function() {
+            $.toptip('操作失败', 'error');
+        })
+        .on('click', '#show-warning', function() {
+            $.toptip('警告', 'warning');
+        })
+</script>
 
 </body>
 </html>
